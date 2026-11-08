@@ -23,4 +23,4 @@ Sem **notandi**, *langar mér* að geta **deilt hvar ég hef borðar** og **hva�
 - Framework: [Django (Python)](https://www.djangoproject.com/)
 - Frontend Library: [HTMX](https://htmx.org/)
 - CSS og Styling: [tailwind](https://tailwindcss.com/)
-- Gangavinnsla: [postgreSQL](https://www.postgresql.org/)
+- Gagnavinnsla: [postgreSQL](https://www.postgresql.org/)
