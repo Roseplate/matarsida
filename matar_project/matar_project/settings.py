@@ -75,12 +75,8 @@ WSGI_APPLICATION = 'matar_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'masteruser',
-        'PASSWORD': '~wC9rXvRvPNA;tF',
-        'HOST': 'database-matarsida-1.cxkqw6cgsgfx.eu-north-1.rds.amazonaws.com',
-        'PORT': '5432'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
