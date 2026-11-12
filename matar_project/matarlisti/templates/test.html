@@ -1,0 +1,19 @@
+<h1>User List</h1>
+
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>User Creation</th>
+    </tr>
+    {% for User in Users %}
+    <tr>
+        <td> {{ User.id }}</td>
+        <td> {{ User.FirstName }}</td>
+        <td> {{ User.LastName }}</td>
+        <td> {{ User.created_at }}</td>
+    </tr>
+    {% endfor %}
+</table>

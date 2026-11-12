@@ -73,18 +73,19 @@ WSGI_APPLICATION = 'matar_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.1/ref/settings/#databases
 
-import environ
+
+import os
+from dotenv import load_dotenv, dotenv_values
 import dj_database_url
 
-env = environ.Env()
-environ.Env.read_env()
+load_dotenv()
+
 
 DATABASES = {
-    'default': dj_database_url.config(default=env('DATABASE_URI'))
+    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
 }
 
-SUPABASE_URL = env('SUPABASE_URL')
-SUPABASE_KEY = env('SUPABASE_KEY')
+
 
 # Password validation
 # https://docs.djangoproject.com/en/6.1/ref/settings/#auth-password-validators
