@@ -7,5 +7,21 @@ def get_supabase_client() -> Client:
 
 def fetch_users():
     supabase = get_supabase_client()
-    response = supabase.table('Users').select("*").execute()
+    response = supabase.table('users').select("*").execute()
+    return response.data
+
+def fetch_matarlisti():
+    supabase = get_supabase_client()
+    response = supabase.table('matarsidur').select('*').execute()
+    return response.data
+
+def fetch_stad(stad_id):
+    supabase = get_supabase_client()
+    response = {
+        supabase.table('matarsidur')
+        .select('*')
+        .eq('id', stad_id)
+        .single()
+        .execute()
+    }
     return response.data
