@@ -23,7 +23,7 @@ Sem **notandi**, *langar mér* að geta **deilt hvar ég hef borðað** og **hva
 - Framework: [Django (Python)](https://www.djangoproject.com/)
 - Frontend Library: [HTMX](https://htmx.org/)
 - CSS og Styling: [tailwind](https://tailwindcss.com/)
-- Gagnavinnsla: [postgreSQL](https://www.postgresql.org/)
+- Gagnavinnsla: [postgreSQL (supabase)](https://supabase.com/)
 
 # [Figma Prototype](https://www.figma.com/proto/GsLyxnO6NFodbGyZs8zHYA/food-app-thing?node-id=59-22&p=f&t=0DjG0HzfZRkacNlf-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=59%3A9)
 Gætir þurft að biðja/bíða eftir leyfi
