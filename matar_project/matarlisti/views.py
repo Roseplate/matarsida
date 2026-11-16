@@ -10,4 +10,4 @@ def matarlisti(request):
 
 def UserList(request):
     Users = fetch_users()
-    return render(request, 'test.html', {'Users': Users})
+    return render(request, 'userlist.html', {'Users': Users})
