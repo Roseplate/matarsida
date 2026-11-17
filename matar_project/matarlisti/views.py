@@ -1,7 +1,24 @@
 from django.http import HttpResponse
 from django.template import loader
 from django.shortcuts import render, redirect
-from .services.supabase_service import fetch_users
+from .services.supabase_service import fetch_users, fetch_matarlisti, fetch_stad, upload_matarsidur_image
+
+'''
+fetch_users: Fetches all users in the users table in the database
+
+fetch_matarlisti: "WIP" fetches all restaurants in the matarsidur table
+
+fetch_stad: "WIP" fetches a single restaurant based on id. Takes one argument which is the id
+Example: posts/<int:post_id>/
+'''
+
+def upload_image(request, stad_id):
+    if request.method == "POST" and 'image' in request.FILES:
+        upload_matarsidur_image(stad_id, request.FILES['image'])
+        return redirect('restaurantlist')
+    return render(request, 'upload_image.html', {'stad_id': stad_id})
+
+
 
 # Create your views here.
 def default(request):
@@ -11,6 +28,10 @@ def matarlisti(request):
     template = loader.get_template("index.html")
     return HttpResponse(template.render())
 
-def UserList(request):
+def userlist(request):
     Users = fetch_users()
     return render(request, 'userlist.html', {'Users': Users})
+
+def restaurantlist(request):
+    matarlisti = fetch_matarlisti()
+    return render(request, 'restaurantlist.html', {'matarlisti' : matarlisti})
