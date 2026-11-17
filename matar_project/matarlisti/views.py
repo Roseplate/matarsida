@@ -5,7 +5,6 @@ from .services.supabase_service import fetch_users
 
 # Create your views here.
 def default(request):
-    template = loader.get_template("index.html")
     return redirect("matarlisti")
 
 def matarlisti(request):
