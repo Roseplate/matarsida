@@ -1,9 +1,12 @@
 from django.http import HttpResponse
 from django.template import loader
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .services.supabase_service import fetch_users
 
 # Create your views here.
+def default(request):
+    return redirect("matarlisti")
+
 def matarlisti(request):
     template = loader.get_template("index.html")
     return HttpResponse(template.render())
