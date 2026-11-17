@@ -21,6 +21,9 @@ def upload_image(request, stad_id):
 
 
 # Create your views here.
+def default(request):
+    return redirect("matarlisti")
+
 def matarlisti(request):
     template = loader.get_template("index.html")
     return HttpResponse(template.render())
