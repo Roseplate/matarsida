@@ -1,0 +1,6 @@
+<h1>Upload image for restaurant {{ stad_id }}</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="image" accept="image/*" required>
+    <button type="submit">Upload</button>
+</form>
