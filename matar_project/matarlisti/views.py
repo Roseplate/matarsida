@@ -18,6 +18,9 @@ def upload_image(request, stad_id):
         return redirect('restaurantlist')
     return render(request, 'upload_image.html', {'stad_id': stad_id})
 
+def profile(request):
+    return render(request, "profile.html")
+
 # Create your views here.
 def default(request):
     return redirect("matarlisti")

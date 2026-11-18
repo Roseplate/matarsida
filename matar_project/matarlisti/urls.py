@@ -9,6 +9,8 @@ urlpatterns = [
     path('matarlisti/<int:start>/', views.matarlisti),
     path('matarlisti/<int:start>/<int:amount>/', views.matarlisti),
 
+    path('profile/', views.profile, name="profile"),
+
     # Debug/Dev?
     path('userlist/', views.userlist, name='userlist'),
     path('restaurantlist/', views.restaurantlist, name='restaurantlist'),
@@ -16,5 +18,4 @@ urlpatterns = [
 
     # TODO needs to be configured entirely.
     path('history/', views.default, name="history"),
-    path('profile/', views.default, name="profile"),
 ]
