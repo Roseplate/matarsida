@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="p-4 m-0 bg-orange-50 font-[Arial,sans-serif] text-[#333]">
+    <header class="bg-red-800 p-4 text-white flex justify-between items-center sticky rounded-lg">
+        <h1 class="font-bold text-center">Matarsíða</h1>
+        <p class="text-right">Menu</p>
+    </header>
+    <div class="mx-auto mt-10 grid max-w-[900px] grid-cols-1 gap-6 p-5 md:grid-cols-[300px_1fr]">
+        <aside class="rounded-xl bg-white p-6">
+            <div class="mx-auto mb-4 flex h-[120px] w-[120px] items-center justify-center rounded-full bg-red-200 text-[42px] font-bold text-stone-900">
+                Lalli
+            </div>
+            <h2 class="mb-3 text-center">Lalli Stefánsson</h2>
+            <div class="mb-5 text-center text-[#666]">lalli@stefansson.is</div>
+            <ul class="m-0 list-none p-0">
+                <li><strong>Username:</strong> Lalli</li>
+                <li><strong>Work:</strong> Member</li>
+                <li><strong>Location:</strong> Reykjavík, Iceland</li>
+                <li><strong>Bio:</strong> Enthusiastic traveler and food lover. Always on the lookout for new culinary experiences and hidden gems around the world.</li>
+            </ul>
+        </aside>
+
+        <main class="rounded-xl bg-white p-6">
+            <h1 class="mb-3 text-left text-[32px]">My Profile</h1>
+
+            <div class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
+                <div class="rounded-[10px] bg-[#f9fafb] p-4">
+                    <label class="mb-2 block text-xs uppercase tracking-[0.05em] text-[#778]">Full name</label>
+                    <p class="m-0 text-lg text-[#222]">Lalli Stefánsson</p>
+                </div>
+
+                <div class="rounded-[10px] bg-[#f9fafb] p-4">
+                    <label class="mb-2 block text-xs uppercase tracking-[0.05em] text-[#778]">Email</label>
+                    <p class="m-0 text-lg text-[#222]">lalli@stefansson.is</p>
+                </div>
+
+                <div class="rounded-[10px] bg-[#f9fafb] p-4">
+                    <label class="mb-2 block text-xs uppercase tracking-[0.05em] text-[#778]">Phone</label>
+                    <p class="m-0 text-lg text-[#222]">828-1234</p>
+                </div>
+
+                <div class="rounded-[10px] bg-[#f9fafb] p-4">
+                    <label class="mb-2 block text-xs uppercase tracking-[0.05em] text-[#778]">Location</label>
+                    <p class="m-0 text-lg text-[#222]">Reykjavík, Iceland</p>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-wrap gap-3">
+                <a href="#" class="rounded-lg bg-red-800 px-[18px] py-[10px] font-bold no-underline text-white">Edit profile</a>
+                <a href="#" class="rounded-lg bg-red-800 px-[18px] py-[10px] font-bold no-underline text-white">Change password</a>
+            </div>
+        </main>
+    </div>
+    <footer class="bg-red-800 text-white p-4 grid grid-cols-3 gap-4 text-center rounded-lg">
+        <p>Map</p>
+        <a href="history.html">History</a>
+        <a href="index.html">Back to home</a>
+    </footer>
+</body>
+</html>
