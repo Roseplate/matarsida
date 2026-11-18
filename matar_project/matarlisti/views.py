@@ -18,8 +18,6 @@ def upload_image(request, stad_id):
         return redirect('restaurantlist')
     return render(request, 'upload_image.html', {'stad_id': stad_id})
 
-
-
 # Create your views here.
 def default(request):
     return redirect("matarlisti")
@@ -29,8 +27,8 @@ def matarlisti(request):
     return HttpResponse(template.render())
 
 def userlist(request):
-    Users = fetch_users()
-    return render(request, 'userlist.html', {'Users': Users})
+    users = fetch_users()
+    return render(request, 'userlist.html', {'users': users})
 
 def restaurantlist(request):
     matarlisti = fetch_matarlisti()
