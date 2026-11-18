@@ -1,12 +1,4 @@
-{% load tailwind_cli %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test tailwind</title>
-    {% tailwind_css %}
-</head>
+{% include "partials/head.html" %}
 <body class="p-4 bg-orange-50 text-stone-900">
     <header class="bg-red-800 p-4 text-white flex justify-between items-center sticky rounded-lg">
         <h1 class="font-bold text-center">Matarsíða</h1>
@@ -20,10 +12,6 @@
             {% endfor %}
         </div>
     </main>
-    <footer class="bg-red-800 text-white p-4 grid grid-cols-3 gap-4 text-center rounded-lg">
-        <p>Map</p>
-        <a href="/myworld/Test/History.html">History</a>
-        <a href="/myworld/Test/Profile.html">Profile</a>
-    </footer>
+    {% include "partials/footer.html" %}
 </body>
 </html>
