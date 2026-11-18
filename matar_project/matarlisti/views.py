@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.template import loader
 from django.shortcuts import render, redirect
-from .services.supabase_service import fetch_users, fetch_matarlisti, fetch_stad, upload_matarsidur_image
+from .services.supabase_service import fetch_users, fetch_matarlisti, fetch_stadir, upload_matarsidur_image
 
 '''
 fetch_users: Fetches all users in the users table in the database
@@ -22,9 +22,9 @@ def upload_image(request, stad_id):
 def default(request):
     return redirect("matarlisti")
 
-def matarlisti(request):
-    template = loader.get_template("index.html")
-    return HttpResponse(template.render())
+def matarlisti(request, start=0, amount=20):
+    stadir = fetch_stadir(start, amount)
+    return render(request, 'index.html', {'stadir': stadir})
 
 def userlist(request):
     users = fetch_users()

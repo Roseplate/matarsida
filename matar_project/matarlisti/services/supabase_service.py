@@ -64,11 +64,10 @@ def fetch_matarlisti():
 
 def fetch_stad(stad_id):
     supabase = get_supabase_client()
-    response = {
+    response = (
         supabase.table('matarsidur')
         .select('*')
         .eq('id', stad_id)
-        .single()
         .execute()
-    }
+    )
     return response.data
