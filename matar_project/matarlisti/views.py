@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.template import loader
 from django.shortcuts import render, redirect
-from .services.supabase_service import fetch_users, fetch_matarlisti, fetch_stad, upload_matarsidur_image
+from .services.supabase_service import fetch_users, fetch_matarlisti, fetch_stadir, upload_matarsidur_image
 
 '''
 fetch_users: Fetches all users in the users table in the database
@@ -18,19 +18,17 @@ def upload_image(request, stad_id):
         return redirect('restaurantlist')
     return render(request, 'upload_image.html', {'stad_id': stad_id})
 
-
-
 # Create your views here.
 def default(request):
     return redirect("matarlisti")
 
-def matarlisti(request):
-    template = loader.get_template("index.html")
-    return HttpResponse(template.render())
+def matarlisti(request, start=0, amount=20):
+    stadir = fetch_stadir(start, amount)
+    return render(request, 'index.html', {'stadir': stadir})
 
 def userlist(request):
-    Users = fetch_users()
-    return render(request, 'userlist.html', {'Users': Users})
+    users = fetch_users()
+    return render(request, 'userlist.html', {'users': users})
 
 def restaurantlist(request):
     matarlisti = fetch_matarlisti()

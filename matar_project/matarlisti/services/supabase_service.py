@@ -62,13 +62,23 @@ def fetch_matarlisti():
 
     return restaurants
 
+def fetch_stadir(start=0, amount=20):
+    supabase = get_supabase_client()
+    response = (
+        supabase.table('matarsidur')
+        .select('*')
+        .gte('id', start)
+        .lt('id', start+amount)
+        .execute()
+    )
+    return response.data
+
 def fetch_stad(stad_id):
     supabase = get_supabase_client()
-    response = {
+    response = (
         supabase.table('matarsidur')
         .select('*')
         .eq('id', stad_id)
-        .single()
         .execute()
-    }
+    )
     return response.data
