@@ -11,6 +11,10 @@ urlpatterns = [
 
     path('profile/', views.profile, name="profile"),
 
+    path('htmx/button/', views.menubutton, name="menubutton"),
+
+    path('htmx/remove/', views.delete, name="remove"),
+
     # Debug/Dev?
     path('userlist/', views.userlist, name='userlist'),
     path('restaurantlist/', views.restaurantlist, name='restaurantlist'),
