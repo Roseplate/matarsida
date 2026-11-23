@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.template import loader
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from .services.supabase_service import fetch_users, fetch_matarlisti, fetch_stadir, upload_matarsidur_image, create_user, get_user_by_username, auth_user
+from .services.supabase_service import fetch_users, fetch_matarlisti, fetch_stadir, upload_matarsidur_image, create_user, get_user_by_username, auth_user, get_user_by_id
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 from django.views.decorators.http import require_POST
@@ -88,7 +88,17 @@ def login_view(request):
 
 
 def profile(request):
-    return render(request, "profile.html")
+    user_id = request.session.get('user_id')
+    if not user_id:
+        return redirect('login')
+
+    user = get_user_by_id(user_id)
+    if user is None:
+        # failsafe is user was deleted for some reason and the session still exists
+        request.session.flush()
+        return redirect('login')
+
+    return render(request, 'profile.html', {'user': user})
 
 # Create your views here.
 def default(request):

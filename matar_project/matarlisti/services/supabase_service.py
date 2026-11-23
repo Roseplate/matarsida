@@ -19,6 +19,20 @@ def get_user_by_username(username):
     )
     return response.data[0] if response.data else None
 
+def get_user_by_id(user_id):
+    '''
+    Fetches one user by id for display. Never selects the password hash.
+    '''
+    supabase = get_supabase_client()
+    response = (
+        supabase.table('users')
+        .select('id, firstname, lastname, username, email, phone, bio, created_at')
+        .eq('id', user_id)
+        .limit(1)
+        .execute()
+    )
+    return response.data[0] if response.data else None
+
 def create_user(firstname, lastname, username, password):
     '''
     I am using djangos inbuilt make and check password hashes which uses random salts aswell and the raw password is not saved here
