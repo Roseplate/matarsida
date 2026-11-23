@@ -2,9 +2,44 @@ from supabase import create_client, Client
 from django.conf import settings
 import os
 import time
+from django.contrib.auth.hashers import make_password, check_password
 
 def get_supabase_client() -> Client:
     return create_client(os.getenv("SUPABASE_URL"), os.getenv("SUPABASE_KEY"))
+
+
+def get_user_by_username(username):
+    supabase = get_supabase_client()
+    response = (
+        supabase.table('users')
+        .select('id, firstname, lastname, username, password')
+        .eq('username', username)
+        .limit(1)
+        .execute()
+    )
+    return response.data[0] if response.data else None
+
+def create_user(firstname, lastname, username, password):
+    '''
+    I am using djangos inbuilt make and check password hashes which uses random salts aswell and the raw password is not saved here
+    '''
+    supabase = get_supabase_client()
+    response = supabase.table('users').insert({
+        'firstname': firstname,
+        'lastname': lastname,
+        'username': username,
+        'password': make_password(password),
+    }).execute()
+    return response.data[0]
+
+def auth_user(username, password):
+    '''
+    Returns the user dict if username and password match otherwise it returns None
+    '''
+    user = get_user_by_username(username)
+    if user and check_password(password, user['password']):
+        return user
+    return None
 
 
 def upload_matarsidur_image(stad_id, image_file):

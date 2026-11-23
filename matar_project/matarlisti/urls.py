@@ -11,12 +11,24 @@ urlpatterns = [
 
     path('profile/', views.profile, name="profile"),
 
+<<<<<<< HEAD
     path('friends/', views.friends, name="friends"),
+=======
+    path('htmx/button/', views.menubutton, name="menubutton"),
+
+    path('htmx/remove/', views.delete, name="remove"),
+>>>>>>> 076226a9b43fbf1964824d9d061ab510d63041da
 
     # Debug/Dev?
     path('userlist/', views.userlist, name='userlist'),
     path('restaurantlist/', views.restaurantlist, name='restaurantlist'),
     path('restaurant/<int:stad_id>/upload/', views.upload_image, name='upload_image'),
+    
+    # Login/sign up and that stuff
+    path('register/', views.register, name='register'),
+    path('register/check-username/', views.check_username, name='check_username'),
+    path('login/', views.login_view, name='login'),
+    path('logout/', views.logout_view, name='logout'),
 
     # TODO needs to be configured entirely.
     path('history/', views.default, name="history"),

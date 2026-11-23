@@ -1,0 +1,7 @@
+{% if errors %}
+<ul>
+    {% for e in errors %}<li>{{ e }}</li>{% endfor %}
+</ul>
+{% elif success %}
+<div>{{ success }}</div>
+{% endif %}
