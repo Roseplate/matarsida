@@ -8,12 +8,12 @@
         <th>Last Name</th>
         <th>User Creation</th>
     </tr>
-    {% for User in Users %}
+    {% for user in users %}
     <tr>
-        <td> {{ User.id }}</td>
-        <td> {{ User.firstname }}</td>
-        <td> {{ User.lastname }}</td>
-        <td> {{ User.created_at }}</td>
+        <td> {{ user.id }}</td>
+        <td> {{ user.firstname }}</td>
+        <td> {{ user.lastname }}</td>
+        <td> {{ user.created_at }}</td>
     </tr>
     {% endfor %}
 </table>
