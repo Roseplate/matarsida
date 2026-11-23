@@ -1,0 +1,27 @@
+<!-- Backdrop & Centering -->
+<div class="modal fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm">
+  
+    <div 
+        class="fixed inset-0 z-0 bg-black/50 backdrop-blur-sm"
+        hx-get="{% url "remove" %}" 
+        hx-target="closest .modal"
+        hx-swap="delete">
+    </div>
+
+    <!-- Card - Vinna Innan Þessu -->
+    <div class="z-10 rounded-xl bg-white p-6">
+
+        <!-- Setja Dót Hér -->
+        <div class="px-6 py-4 text-sm text-gray-600">
+            <!-- Allt það fancy design og takkar sem hægt er að setja -->
+            <!-- Eyðið mynd þegar þið vinnið í þessu. -->
+            <img src="https://static2.klipy.com/ii/4493325008d34b7bf8cd6813cd5c1619/26/6d/wyPejqx6ODVBAL.gif" alt="">
+            Stuff TBA
+        </div>
+
+        <div class="bg-red-800 p-2 text-white items-center rounded-lg" hx-target="closest .modal" hx-get="{% url "remove" %}" hx-swap="delete">
+            <button >Close</button>
+        </div>
+
+    </div>
+</div>

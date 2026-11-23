@@ -106,6 +106,11 @@ def restaurantlist(request):
     matarlisti = fetch_matarlisti()
     return render(request, 'restaurantlist.html', {'matarlisti' : matarlisti})
 
+def menubutton(request):
+    return render(request, 'partials/modal.html')
+
+def delete(request):
+    return HttpResponse()
 
 @require_POST
 def logout_view(request):
