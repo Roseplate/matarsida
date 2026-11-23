@@ -11,6 +11,8 @@ urlpatterns = [
 
     path('profile/', views.profile, name="profile"),
 
+    path('friends/', views.friends, name="friends"),
+
     # Debug/Dev?
     path('userlist/', views.userlist, name='userlist'),
     path('restaurantlist/', views.restaurantlist, name='restaurantlist'),

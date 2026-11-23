@@ -36,3 +36,7 @@ def userlist(request):
 def restaurantlist(request):
     matarlisti = fetch_matarlisti()
     return render(request, 'restaurantlist.html', {'matarlisti' : matarlisti})
+
+def friends(request):
+    friends = fetch_users()
+    return render(request, "friends.html", {'friends': friends})

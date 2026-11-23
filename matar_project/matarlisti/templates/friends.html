@@ -1,0 +1,19 @@
+{% include "partials/head.html" %}
+<body class="p-4 bg-orange-50 text-stone-900">
+    <header class="bg-red-800 p-4 text-white flex justify-between items-center sticky rounded-lg">
+        <h1 class="font-bold text-center">Matarsíða</h1>
+        <p class="text-right">Menu</p>
+    </header>
+    <main class="p-4">
+        <h1 class="text-center text-3xl font-bold">Friends</h1>
+        <div class="bg-gray-200 p-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:grid-cols-4">
+            {% for friend in friends %}
+                <div class="rounded-lg border-2 border-stone-200 bg-white p-4">
+                    <h2 class="font-bold text-lg">{{ friend.firstname }} {{ friend.lastname }}</h2>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+    {% include "partials/footer.html" %}
+</body>
+</html>
