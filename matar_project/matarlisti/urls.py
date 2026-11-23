@@ -11,13 +11,10 @@ urlpatterns = [
 
     path('profile/', views.profile, name="profile"),
 
-<<<<<<< HEAD
     path('friends/', views.friends, name="friends"),
-=======
     path('htmx/button/', views.menubutton, name="menubutton"),
 
     path('htmx/remove/', views.delete, name="remove"),
->>>>>>> 076226a9b43fbf1964824d9d061ab510d63041da
 
     # Debug/Dev?
     path('userlist/', views.userlist, name='userlist'),

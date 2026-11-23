@@ -106,11 +106,9 @@ def restaurantlist(request):
     matarlisti = fetch_matarlisti()
     return render(request, 'restaurantlist.html', {'matarlisti' : matarlisti})
 
-<<<<<<< HEAD
 def friends(request):
     friends = fetch_users()
     return render(request, "friends.html", {'friends': friends})
-=======
 def menubutton(request):
     return render(request, 'partials/modal.html')
 
@@ -121,4 +119,3 @@ def delete(request):
 def logout_view(request):
     request.session.flush()
     return redirect('login')
->>>>>>> 076226a9b43fbf1964824d9d061ab510d63041da
