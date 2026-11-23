@@ -1,0 +1,26 @@
+{% include "partials/head.html" %}
+<body>
+<main>
+    <h1>Create account</h1>
+
+    <form method="post" hx-post="{% url 'register' %}" hx-target="#result"
+          hx-on::after-request="if (this.querySelector('#result .bg-green-100')) this.reset()">
+        {% csrf_token %}
+        <input name="firstname" placeholder="First name" required>
+        <input name="lastname" placeholder="Last name" required>
+        <input name="username" placeholder="Username" required autocomplete="username"
+               hx-get="{% url 'check_username' %}" hx-trigger="keyup changed delay:400ms"
+               hx-target="#username-status">
+        <div id="username-status" class="text-sm"></div>
+        <input type="password" name="password" placeholder="Password" required
+               autocomplete="new-password">
+        <input type="password" name="password2" placeholder="Repeat password" required
+               autocomplete="new-password">
+        <button>Create account</button>
+        <div id="result"></div>
+    </form>
+
+    <p>Already have an account? <a href="{% url 'login' %}">Log in</a></p>
+</main>
+</body>
+</html>

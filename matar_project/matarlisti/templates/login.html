@@ -1,0 +1,26 @@
+{% include "partials/head.html" %}
+<body>
+<main>
+    <h1>Log in</h1>
+
+    {% if request.session.username %}
+        <p>Currently logged in as <strong>{{ request.session.username }}</strong>.</p>
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button>Log out</button>
+        </form>
+    {% endif %}
+
+    <form method="post" hx-post="{% url 'login' %}" hx-target="#result" class="flex flex-col gap-3">
+        {% csrf_token %}
+        <input name="username" placeholder="Username" required autocomplete="username">
+        <input type="password" name="password" placeholder="Password" required
+               autocomplete="current-password">
+        <button>Log in</button>
+        <div id="result"></div>
+    </form>
+
+    <p>No account? <a href="{% url 'register' %}">Create one</a></p>
+</main>
+</body>
+</html>
