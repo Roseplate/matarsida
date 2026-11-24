@@ -1,5 +1,5 @@
 <div class="fixed inset-0 z-0 bg-white/50 backdrop-blur-sm mask-b-from-5% mask-b-to-10%"></div>
 <header class="bg-red-800 p-4 text-white flex justify-between items-center sticky top-4 z-50 rounded-lg">
-    <h1 class="font-bold text-center">Matarsíða</h1>
+    <a href="{% url "matarlisti" %}" class="font-bold no-underline hover:text-amber-300">Matarsíða</a>
     <button class="text-right" hx-get="{% url "menubutton" %}" hx-target="body" hx-swap="beforeend">Menu</button>
 </header>

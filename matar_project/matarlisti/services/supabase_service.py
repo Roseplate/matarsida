@@ -67,12 +67,13 @@ def upload_matarsidur_image(stad_id, image_file):
     supabase.table('matarsidur').update({'img': public_url}).eq('id', stad_id).execute()
     return public_url
 
-def fetch_users():
+def get_users():
+    '''Fetches all users in the users table in the database'''
     supabase = get_supabase_client()
     response = supabase.table('users').select("*").execute()
     return response.data
 
-def fetch_matarlisti():
+def get_matarlisti():
     """
     Fetches all restaurants ordered by id. If the storage bucket has an image
     named after a restaurants id. That image is used instead of the img column 
@@ -97,7 +98,10 @@ def fetch_matarlisti():
 
     return restaurants
 
-def fetch_stadir(start=0, amount=20):
+def get_stadir(start=0, amount=20):
+    '''
+    Gets places 
+    '''
     supabase = get_supabase_client()
     response = (
         supabase.table('matarsidur')
@@ -108,7 +112,12 @@ def fetch_stadir(start=0, amount=20):
     )
     return response.data
 
-def fetch_stad(stad_id):
+def get_stad(stad_id):
+    '''
+    Fetches a single restaurant based on id. Takes one argument which is the id.
+
+    Example: posts/<int:post_id>/
+    '''
     supabase = get_supabase_client()
     response = (
         supabase.table('matarsidur')
