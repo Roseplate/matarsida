@@ -1,5 +1,7 @@
-<div class="bg-white p-4 rounded-lg border-stone-200 border-2">
-    <a href="Place.html" class="font-bold text-lg">{{ stadur.name }}</a>
+<a href="{% url 'place_detail' stadur.id %}" class="block rounded-lg border-2 border-stone-200 bg-white p-4 text-inherit no-underline hover:border-red-800 focus:outline-2 focus:outline-red-800">
+    <h2 class="text-lg font-bold">{{ stadur.name }}</h2>
     <p class="mt-2">{{ stadur.description }}</p>
-    <img class="h-40 w-full object-cover mt-2 rounded" src="{{ stadur.img }}" alt="{{ stadur.name }}"/>
-</div>
+    {% if stadur.img %}
+        <img class="mt-2 h-40 w-full rounded object-cover" src="{{ stadur.img }}" alt="{{ stadur.name }}"/>
+    {% endif %}
+</a>

@@ -4,28 +4,14 @@
     <main class="p-4">
     <div class="bg-white border-stone-200 border-2 p-4 rounded grid gap-4 grid-cols-1 lg:grid-cols-2">
         <article class="flex flex-col items-center justify-center pb-4">
-            <h1 class="text-2xl font-bold text-center">Jörgensen Kitchen & Bar</h1>
-            <img class="w-full h-full object-cover" src="/myworld/images testing/Jörgensen.jpg" alt="Jörgensen Kitchen & Bar"/>
+            <h1 class="text-2xl font-bold text-center">{{ stadur.name }}</h1>
+            {% if stadur.img %}
+                <img class="w-full h-full object-cover" src="{{ stadur.img }}" alt="{{ stadur.name }}"/>
+            {% endif %}
         </article>
         <article class="font-serif">
             <h1 class="text-xl font-bold">About</h1>
-            <p>Jörgensen Kitchen & Bar is a delightful establishment where visitors can enjoy delicious food and refreshing drinks in a cozy atmosphere.</p>
-            <p><strong>Location:</strong> Laugavegur 120, 101 Reykjavík</p>
-            <p><strong>Google Rating:</strong> 4,3/5</p>
-            <p class="pb-2"><strong>Reviews:</strong></p>
-            <ul class="list-disc list-inside ml-4">
-                <li class="mb-2">
-                    After two days with back to back excursions we decided to have dinner in the hotel and we are so glad we did. We had the fish menu and the meat menu and both were absolutely delicious. The four courses were a great way of trying local cuisine, without being overloaded as the portions were just right. Produce was fresh and excellently prepared.
-                    Now, I had seen that some reviews complained about the service, but I can honestly say that our waiter (Tian) was super helpful, professional yet friendly.
-                    I would definitely recommend the restaurant and if you are staying in the hotel you also get a discount.
-                </li>
-                <li class="mb-2">
-                    We had our first meal in Iceland here and both of our dishes were delicious! I had the halibut special. It was perfectly cooked with the skin on. I typically don’t eat the skin but I did this time and it was delicious. The halibut was served with veggie chips and carrots with two purées surrounding them and the halibut. One purée was apple. I never would’ve thought it would go well with halibut, but it did.  My friend had the Arctic char and said it was also delicious.
-                </li>
-                <li class="mb-2">
-                    Fish of the day does not meet my expectation. Rather dry and seems like need of a real chef touch. On the otherhand the live music is fantastic.
-                </li>
-            </ul>
+            <p>{{ stadur.description }}</p>
         </article>
     </div>
     </main>

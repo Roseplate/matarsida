@@ -1,8 +1,8 @@
-from django.http import HttpResponse
+from django.http import Http404, HttpResponse
 from django.template import loader
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from .services.supabase_service import fetch_users, fetch_matarlisti, fetch_stadir, upload_matarsidur_image, create_user, get_user_by_username, auth_user
+from .services.supabase_service import fetch_users, fetch_matarlisti, fetch_stadir, fetch_stad, upload_matarsidur_image, create_user, get_user_by_username, auth_user
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 from django.views.decorators.http import require_POST
@@ -97,6 +97,12 @@ def default(request):
 def matarlisti(request, start=0, amount=20):
     stadir = fetch_stadir(start, amount)
     return render(request, 'index.html', {'stadir': stadir})
+
+def place_detail(request, stad_id):
+    results = fetch_stad(stad_id)
+    if not results:
+        raise Http404("Place not found")
+    return render(request, 'place.html', {'stadur': results[0]})
 
 def userlist(request):
     users = fetch_users()

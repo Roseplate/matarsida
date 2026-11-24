@@ -8,6 +8,7 @@ urlpatterns = [
     path('matarlisti/', views.matarlisti, name='matarlisti'),
     path('matarlisti/<int:start>/', views.matarlisti),
     path('matarlisti/<int:start>/<int:amount>/', views.matarlisti),
+    path('restaurant/<int:stad_id>/', views.place_detail, name='place_detail'),
 
     path('profile/', views.profile, name="profile"),
 
