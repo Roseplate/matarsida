@@ -18,6 +18,7 @@ urlpatterns = [
     path('register/check-username/', views.check_username, name='check_username'),
     path('login/', views.login, name='login'),
     path('logout/', views.logout, name='logout'),
+    path('friends/', views.friends, name="friends"),
 
     path('htmx/button/', views.menubutton, name="menubutton"),
     path('htmx/remove/', views.delete, name="remove"),

@@ -104,6 +104,9 @@ def check_username(request):
         return HttpResponse('<span class="text-red-700">Username Taken</span>')
     return HttpResponse('<span class="text-green-700">Username Available</span>')
 
+def friends(request):
+    friends = fetch_users()
+    return render(request, "friends.html", {'friends': friends})
 def menubutton(request):
     return render(request, 'partials/menu_button_modal.html')
 
