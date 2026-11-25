@@ -1,27 +1,14 @@
 {% include "partials/head.html" with title="History" %}
 <body class="p-4 bg-orange-50 text-stone-900">
-  {% include "partials/header.html" %}
-  <main class="mx-auto my-10 max-w-3xl rounded-xl border border-amber-200 bg-white p-6 shadow-lg">
-    <h1 class="mt-0 mb-6 text-3xl font-bold text-red-800">Your History</h1>
-
-    <section class="border-b border-amber-200 py-4">
-      <a href="place.html" class="mb-2 text-xl font-semibold text-amber-700 no-underline hover:text-red-800">Jörgensen Kitchen & Bar</a>
-      <img src="/myworld/images testing/Jörgensen.jpg" alt="Jörgensen Kitchen & Bar" class="mb-2 h-40 w-full object-cover rounded" />
-      <p class="text-stone-700">Hefur mjög góðan mat.</p>
-    </section>
-
-    <section class="border-b border-amber-200 py-4">
-      <a href="place.html" class="mb-2 text-xl font-semibold text-amber-700 no-underline hover:text-red-800">staður 2</a>
-      <img src="/myworld/images testing/staður2.jpg" alt="staður 2" class="mb-2 h-40 w-full object-cover rounded" />
-      <p class="text-stone-700">Staður 2 er geggjaður</p>
-    </section>
-
-    <section class="py-4">
-      <a href="place.html" class="mb-2 text-xl font-semibold text-amber-700 no-underline hover:text-red-800">Staður 3</a>
-      <img src="/myworld/images testing/staður3.jpg" alt="staður 3" class="mb-2 h-40 w-full object-cover rounded" />
-      <p class="text-stone-700">Staður 3 er flottur.</p>
-    </section>
-  </main>
-  {% include "partials/footer.html" %}
+    {% include "partials/header.html" %}
+    <main class="p-4">
+        <h1 class="text-3xl font-bold text-center">Your History</h1>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 p-4">
+            {% for stadur in stadir %}
+                {% include "partials/place_component.html" with stadur=stadur %}
+            {% endfor %}
+        </div>
+    </main>
+    {% include "partials/footer.html" %}
 </body>
 </html>

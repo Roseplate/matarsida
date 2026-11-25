@@ -16,7 +16,8 @@ def matarlisti(request, start=0, amount=20):
     return render(request, 'index.html', {'stadir': stadir})
 
 def history(request):
-    return render(request, "history.html")
+    stadir = get_stadir(0, 20)
+    return render(request, "history.html", {'stadir': stadir})
 
 def profile(request):
     return render(request, "profile.html")
@@ -64,10 +65,10 @@ def register(request):
     
     if errors:
         return render(request, "partials/form_message.html", {"errors": errors})
-
     create_user(firstname, lastname, username, password)
     return render(request, "partials/form_message.html",
             {"success": f"User '{username}' created. You can now log in."})
+
 
 def login(request):
     if request.method != "POST":
@@ -105,8 +106,10 @@ def check_username(request):
     return HttpResponse('<span class="text-green-700">Username Available</span>')
 
 def friends(request):
-    friends = fetch_users()
+    # TODO Friends + Fetching, sadly not everyone is your friend
+    friends = get_users()
     return render(request, "friends.html", {'friends': friends})
+
 def menubutton(request):
     return render(request, 'partials/menu_button_modal.html')
 

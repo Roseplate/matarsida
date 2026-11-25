@@ -7,7 +7,6 @@ from django.contrib.auth.hashers import make_password, check_password
 def get_supabase_client() -> Client:
     return create_client(os.getenv("SUPABASE_URL"), os.getenv("SUPABASE_KEY"))
 
-
 def get_user_by_username(username):
     supabase = get_supabase_client()
     response = (
@@ -40,7 +39,6 @@ def auth_user(username, password):
     if user and check_password(password, user['password']):
         return user
     return None
-
 
 def upload_matarsidur_image(stad_id, image_file):
     """
