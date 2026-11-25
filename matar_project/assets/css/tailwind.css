@@ -294,6 +294,9 @@
   .h-full {
     height: 100%;
   }
+  .min-h-screen {
+    min-height: 100vh;
+  }
   .w-\[120px\] {
     width: 120px;
   }
@@ -320,9 +323,6 @@
   }
   .grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-  .grid-cols-4 {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
   .flex-col {
     flex-direction: column;
@@ -547,9 +547,6 @@
   }
   .text-\[\#222\] {
     color: #222;
-  }
-  .text-\[\#333\] {
-    color: #333;
   }
   .text-\[\#666\] {
     color: #666;
