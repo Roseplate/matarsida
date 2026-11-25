@@ -1,0 +1,57 @@
+<!-- Backdrop & Centering -->
+<div class="modal fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm">
+  
+    <div 
+        class="fixed inset-0 z-0 bg-black/50 backdrop-blur-sm"
+        hx-get="{% url "remove" %}" 
+        hx-target="closest .modal"
+        hx-swap="delete">
+    </div>
+
+    <!-- Card - Vinna Innan Þessu -->
+    <div class="z-10 rounded-xl bg-white p-6">
+
+        <!-- Setja Dót Hér -->
+        <div class="px-6 py-4 text-sm text-gray-600">
+            <div class="z-10 w-full max-w-md rounded-xl bg-white p-6">
+                <h2 class="mb-4 text-2xl font-bold">Edit profile</h2>
+
+                <form hx-post="{% url 'edit_profile' %}" hx-target="#edit-result" class="flex flex-col gap-3">
+                    {% csrf_token %}
+                    <input name="firstname" value="{{ user.firstname }}" placeholder="First name" required
+                        class="rounded border p-2">
+                    <input name="lastname" value="{{ user.lastname }}" placeholder="Last name" required
+                        class="rounded border p-2">
+                    <input type="email" name="email" value="{{ user.email|default:'' }}" placeholder="Email"
+                            class="rounded border p-2"
+                            hx-get="{% url 'check_email' %}" hx-trigger="keyup changed delay:400ms"
+                            hx-target="#email-status">
+                    <span id="email-status" class="text-xs"></span>
+                    <input type="tel" name="phone" value="{{ user.phone|default:'' }}" placeholder="123-4567"
+                        maxlength="8" inputmode="numeric" pattern="\d{3}-\d{4}"
+                        oninput="let d = this.value.replace(/\D/g, '').slice(0, 7);
+                            this.value = d.length > 3 ? d.slice(0, 3) + '-' + d.slice(3) : d;"
+                                class="rounded border p-2"
+                                hx-get="{% url 'check_telnum' %}" hx-trigger="keyup changed delay:400ms"
+                                hx-target="#telnum-status">
+                    <span id="telnum-status" class="text-xs"></span>
+                    <textarea name="bio" placeholder="This is my cool bio!" rows="3"
+                            class="rounded border p-2">{{ user.bio|default:'' }}</textarea>
+
+                    <div id="edit-result" class="text-sm text-red-700"></div>
+
+                    <div class="flex gap-3">
+                        <button class="rounded-lg bg-red-800 px-4 py-2 font-bold text-white">Save</button>
+                        <button type="button" class="rounded-lg bg-stone-200 px-4 py-2 font-bold"
+                                hx-get="{% url "remove" %}" hx-target="closest .modal" hx-swap="delete">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="bg-red-800 p-2 text-white items-center rounded-lg" hx-target="closest .modal" hx-get="{% url "remove" %}" hx-swap="delete">
+            <button >Close</button>
+        </div>
+
+    </div>
+</div>

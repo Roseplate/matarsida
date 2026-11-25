@@ -19,6 +19,28 @@ def get_user_by_username(username):
     )
     return response.data[0] if response.data else None
 
+def get_user_by_telnum(telnum):
+    supabase = get_supabase_client()
+    response = (
+        supabase.table('users')
+        .select('id, firstname, lastname, username, email, phone, bio, created_at')
+        .eq('phone', telnum)
+        .limit(1)
+        .execute()
+    )
+    return response.data[0] if response.data else None
+
+def get_user_by_email(email):
+    supabase = get_supabase_client()
+    response = (
+        supabase.table('users')
+        .select('id, firstname, lastname, username, email, phone, bio, created_at')
+        .eq('email', email)
+        .limit(1)
+        .execute()
+    )
+    return response.data[0] if response.data else None
+
 def get_user_by_id(user_id):
     '''
     Fetches one user by id for display. Never selects the password hash.
@@ -33,7 +55,7 @@ def get_user_by_id(user_id):
     )
     return response.data[0] if response.data else None
 
-def create_user(firstname, lastname, username, password):
+def create_user(firstname, lastname, username, password, bio, phone, email):
     '''
     I am using djangos inbuilt make and check password hashes which uses random salts aswell and the raw password is not saved here
     '''
@@ -43,6 +65,9 @@ def create_user(firstname, lastname, username, password):
         'lastname': lastname,
         'username': username,
         'password': make_password(password),
+        'bio': bio,
+        'phone': phone,
+        'email': email
     }).execute()
     return response.data[0]
 
@@ -55,6 +80,48 @@ def auth_user(username, password):
         return user
     return None
 
+def update_user(user_id, firstname, lastname, bio,phone, email):
+    supabase = get_supabase_client()
+    response = (
+        supabase.table('users')
+        .update({
+            'firstname':firstname,
+            'lastname': lastname,
+            'bio': bio,
+            'phone': phone,
+            'email': email,
+        })
+        .eq('id', user_id)
+        .execute()
+    )
+    return response.data[0] if response.data else None
+
+def check_user_password(user_id, password):
+    '''
+    returns true if password matches the stored hash for the user
+    '''
+    supabase = get_supabase_client()
+    response = (
+        supabase.table('users')
+        .select('password')
+        .eq('id', user_id)
+        .limit(1)
+        .execute()
+    )
+    return bool(response.data) and check_password(password, response.data[0]['password'])
+
+def update_password(user_id, new_password):
+    supabase = get_supabase_client()
+    response = (
+        supabase.table('users')
+        .update({
+            'password': make_password(new_password)
+            })
+        .eq('id', user_id)
+        .execute()
+    )
+    return response.data[0] if response.data else None
+    
 
 def upload_matarsidur_image(stad_id, image_file):
     """

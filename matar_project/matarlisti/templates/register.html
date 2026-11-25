@@ -7,15 +7,51 @@
           hx-on::after-request="if (this.querySelector('#result .bg-green-100')) this.reset()">
         {% csrf_token %}
         <input name="firstname" placeholder="First name" required>
+
+        <br>
+
         <input name="lastname" placeholder="Last name" required>
+        
+        <br>
+
         <input name="username" placeholder="Username" required autocomplete="username"
                hx-get="{% url 'check_username' %}" hx-trigger="keyup changed delay:400ms"
                hx-target="#username-status">
+
+        <br>
+
         <div id="username-status" class="text-sm"></div>
         <input type="password" name="password" placeholder="Password" required
                autocomplete="new-password">
+
+        <br>
+
         <input type="password" name="password2" placeholder="Repeat password" required
                autocomplete="new-password">
+
+        <br>
+
+        <textarea name="bio" placeholder="This is my cool bio!">
+        
+        <br>
+
+        <input type="tel" name="phone" placeholder="123-4567" maxlength="8"
+            inputmode="numeric" pattern="\d{3}-\d{4}"
+            oninput="let d = this.value.replace(/\D/g, '').slice(0, 7);
+                this.value = d.length > 3 ? d.slice(0, 3) + '-' + d.slice(3) : d;"
+                hx-get="{% url 'check_telnum' %}" hx-trigger="keyup changed delay:400ms"
+                hx-target="#telnum-status">
+        
+        
+               
+        <div id="telnum-status" class="text-sm"></div>
+
+        <input type="email" name="email" placeholder="Email" autocomplete="email"
+                    hx-get="{% url 'check_email' %}" hx-trigger="keyup changed delay:400ms"
+                    hx-target="#email-status">
+    
+        <div id="email-status" class="text-sm"></div>
+
         <button>Create account</button>
         <div id="result"></div>
     </form>

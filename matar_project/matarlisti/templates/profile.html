@@ -41,8 +41,15 @@
             </div>
 
             <div class="mt-6 flex flex-wrap gap-3">
-                <a href="#" class="rounded-lg bg-red-800 px-[18px] py-[10px] font-bold no-underline text-white">Edit profile</a>
-                <a href="#" class="rounded-lg bg-red-800 px-[18px] py-[10px] font-bold no-underline text-white">Change password</a>
+                <button class="rounded-lg bg-red-800 px-[18px] py-[10px] font-bold no-underline text-white"
+                        hx-get="{% url 'edit_profile' %}"
+                        hx-target="body"
+                        hx-swap="beforeend">Edit Profile</button>
+
+                <button class="rounded-lg bg-red-800 px-[18px] py-[10px] font-bold no-underline text-white"
+                        hx-get="{% url 'change_password' %}"
+                        hx-target="body"
+                        hx-swap="beforeend">Change Password</button>                
             </div>
         </main>
     </div>

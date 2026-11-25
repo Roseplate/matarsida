@@ -13,6 +13,9 @@ urlpatterns = [
 
     path('htmx/button/', views.menubutton, name="menubutton"),
 
+    path('htmx/profile-edit-button', views.edit_profile_button, name="edit_profile_button"),
+    path('htmx/password-change-button', views.edit_password_button, name="edit_password_button"),
+
     path('htmx/remove/', views.delete, name="remove"),
 
     # Debug/Dev?
@@ -23,8 +26,14 @@ urlpatterns = [
     # Login/sign up and that stuff
     path('register/', views.register, name='register'),
     path('register/check-username/', views.check_username, name='check_username'),
+    path('register/check-telnum/', views.check_telnum, name='check_telnum'),
+    path('register/check-email', views.check_email, name='check_email'),
     path('login/', views.login_view, name='login'),
     path('logout/', views.logout_view, name='logout'),
+
+    #edit profile/password
+    path('profile/edit/', views.edit_profile, name='edit_profile'),
+    path('profile/password/', views.change_password_view, name='change_password'),
 
     # TODO needs to be configured entirely.
     path('history/', views.default, name="history"),
