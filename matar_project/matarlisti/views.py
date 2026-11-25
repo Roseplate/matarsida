@@ -106,6 +106,9 @@ def restaurantlist(request):
     matarlisti = fetch_matarlisti()
     return render(request, 'restaurantlist.html', {'matarlisti' : matarlisti})
 
+def friends(request):
+    friends = fetch_users()
+    return render(request, "friends.html", {'friends': friends})
 def menubutton(request):
     return render(request, 'partials/modal.html')
 

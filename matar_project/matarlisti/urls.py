@@ -11,6 +11,7 @@ urlpatterns = [
 
     path('profile/', views.profile, name="profile"),
 
+    path('friends/', views.friends, name="friends"),
     path('htmx/button/', views.menubutton, name="menubutton"),
 
     path('htmx/remove/', views.delete, name="remove"),
