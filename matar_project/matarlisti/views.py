@@ -92,6 +92,7 @@ def logout(request):
     request.session.flush()
     return redirect('matarlisti')
 
+# HTMX
 def check_username(request):
     '''
     htmx live check is on while typing in the username field :D
@@ -103,7 +104,6 @@ def check_username(request):
         return HttpResponse('<span class="text-red-700">Username Taken</span>')
     return HttpResponse('<span class="text-green-700">Username Available</span>')
 
-# HTMX
 def menubutton(request):
     return render(request, 'partials/menu_button_modal.html')
 
